@@ -78,7 +78,7 @@ namespace DevImgGen.Pages
       this.m_DriverStoreHandle = DigLib.DriverStore.NativeMethods.DriverStoreOpenW((string) null, (string) null, 0U, IntPtr.Zero);
       if (this.m_DriverStoreHandle == IntPtr.Zero || Marshal.GetLastWin32Error() != 0)
       {
-        int num = (int) MessageBox.Show("Failed to open the system's Driver Store. Cancelling export.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+        int num = (int) MessageBox.Show("无法打开系统驱动存储。取消导出。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Hand);
         this.OnPageChangeRequested(PageEnum.Landing);
       }
       else
@@ -94,7 +94,7 @@ namespace DevImgGen.Pages
     {
       if (!DigLib.DriverStore.NativeMethods.DriverStoreEnumW(this.m_DriverStoreHandle, 2U, new DigLib.DriverStore.NativeMethods.StoreEnumCallback(this.StoreEnumProc), IntPtr.Zero))
       {
-        int num = (int) MessageBox.Show(string.Format("An error occurred while enumerating installed drivers. Code = {0}", (object) Marshal.GetLastWin32Error()), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+        int num = (int) MessageBox.Show(string.Format("枚举已安装驱动程序时出错。错误代码 = {0}", (object) Marshal.GetLastWin32Error()), "错误", MessageBoxButtons.OK, MessageBoxIcon.Hand);
       }
       else
       {
@@ -110,7 +110,7 @@ namespace DevImgGen.Pages
           string pkgIdent = Path.GetFileName(Path.GetDirectoryName(driver));
           this.Invoke(new MethodInvoker(delegate ()
           {
-            this.lblExportStatus.Text = string.Format("Exporting driver '{0}' ({1}/{2})...", 
+            this.lblExportStatus.Text = string.Format("正在导出驱动程序 '{0}' ({1}/{2})...", 
                 (object) pkgIdent, (object) progress, (object) this.m_DriverList.Count);
             this.pbProgress.Value = progress;
           }));
@@ -126,7 +126,7 @@ namespace DevImgGen.Pages
         this.Invoke(new MethodInvoker(delegate ()
         {
           this.pbProgress.Style = ProgressBarStyle.Marquee;
-          this.lblExportStatus.Text = "Creating ZIP archive...";
+          this.lblExportStatus.Text = "正在创建 ZIP 压缩包...";
         }));
         string str1 = Path.Combine(this.tbSaveDir.Text, "zip");
         string str2 = Path.Combine(this.tbSaveDir.Text, "ArchivedExport.zip");
@@ -140,9 +140,9 @@ namespace DevImgGen.Pages
       this.Invoke(new MethodInvoker(delegate ()
       {
         this.pbProgress.Style = ProgressBarStyle.Continuous;
-        this.lblExportStatus.Text = "Export finished";
+        this.lblExportStatus.Text = "导出完成";
         if (this.chkZip.Checked)
-          this.cmdProceed.Text = "Open folder with exported drivers";
+          this.cmdProceed.Text = "打开导出驱动所在文件夹";
         this.cmdProceed.Visible = true;
       }));
     }
@@ -195,7 +195,7 @@ namespace DevImgGen.Pages
       this.lblHeader.Name = "lblHeader";
       this.lblHeader.Size = new Size(101, 21);
       this.lblHeader.TabIndex = 2;
-      this.lblHeader.Text = "Driver export";
+      this.lblHeader.Text = "驱动程序导出";
       this.btnBack.FlatAppearance.BorderSize = 0;
       this.btnBack.FlatStyle = FlatStyle.Flat;
       this.btnBack.ForeColor = Color.FromArgb(128, 128, 128);
@@ -212,7 +212,7 @@ namespace DevImgGen.Pages
       this.lblWhereExport.Name = "lblWhereExport";
       this.lblWhereExport.Size = new Size(263, 15);
       this.lblWhereExport.TabIndex = 3;
-      this.lblWhereExport.Text = "Where do you want to save the exported drivers?";
+      this.lblWhereExport.Text = "你想将导出的驱动程序保存到哪里？";
       this.pbProgress.Location = new Point(44, 226);
       this.pbProgress.MarqueeAnimationSpeed = 50;
       this.pbProgress.Name = "pbProgress";
@@ -227,7 +227,7 @@ namespace DevImgGen.Pages
       this.btnBrowse.Name = "btnBrowse";
       this.btnBrowse.Size = new Size(75, 25);
       this.btnBrowse.TabIndex = 5;
-      this.btnBrowse.Text = "Browse...";
+      this.btnBrowse.Text = "浏览...";
       this.btnBrowse.UseVisualStyleBackColor = true;
       this.btnBrowse.Click += new EventHandler(this.btnBrowse_Click);
       this.chkZip.AutoSize = true;
@@ -235,7 +235,7 @@ namespace DevImgGen.Pages
       this.chkZip.Name = "chkZip";
       this.chkZip.Size = new Size(84, 19);
       this.chkZip.TabIndex = 6;
-      this.chkZip.Text = "Save as ZIP";
+      this.chkZip.Text = "保存为 ZIP";
       this.chkZip.UseVisualStyleBackColor = true;
       this.cmdStartExport.FlatStyle = FlatStyle.System;
       this.cmdStartExport.Location = new Point(43, 170);
@@ -243,7 +243,7 @@ namespace DevImgGen.Pages
       this.cmdStartExport.Note = "";
       this.cmdStartExport.Size = new Size(494, 44);
       this.cmdStartExport.TabIndex = 8;
-      this.cmdStartExport.Text = "Start export";
+      this.cmdStartExport.Text = "开始导出";
       this.cmdStartExport.UseVisualStyleBackColor = true;
       this.cmdStartExport.Click += new EventHandler(this.cmdStartExport_Click);
       this.lblExportStatus.AutoSize = true;
@@ -251,21 +251,21 @@ namespace DevImgGen.Pages
       this.lblExportStatus.Name = "lblExportStatus";
       this.lblExportStatus.Size = new Size(253, 15);
       this.lblExportStatus.TabIndex = 10;
-      this.lblExportStatus.Text = "Gathering information about installed drivers...";
+      this.lblExportStatus.Text = "正在收集已安装驱动程序的信息...";
       this.lblZipTip.AutoSize = true;
       this.lblZipTip.ForeColor = SystemColors.GrayText;
       this.lblZipTip.Location = new Point(41, (int) sbyte.MaxValue);
       this.lblZipTip.Name = "lblZipTip";
       this.lblZipTip.Size = new Size(503, 30);
       this.lblZipTip.TabIndex = 7;
-      this.lblZipTip.Text = "Info: Use this option only if you plan on building on a different PC. An extracted set is required\r\nfor building but compressed sets are faster to transfer.";
+      this.lblZipTip.Text = "提示：仅当你计划在另一台电脑上构建时才使用此选项。构建需要解压后的驱动集，但压缩包更便于传输。";
       this.cmdProceed.FlatStyle = FlatStyle.System;
       this.cmdProceed.Location = new Point(43, 283);
       this.cmdProceed.Name = "cmdProceed";
       this.cmdProceed.Note = "";
       this.cmdProceed.Size = new Size(494, 44);
       this.cmdProceed.TabIndex = 11;
-      this.cmdProceed.Text = "Build an image with the exported driver set";
+      this.cmdProceed.Text = "使用导出的驱动程序集构建镜像";
       this.cmdProceed.UseVisualStyleBackColor = true;
       this.cmdProceed.Click += new EventHandler(this.cmdProceed_Click);
       this.AutoScaleDimensions = new SizeF(96f, 96f);

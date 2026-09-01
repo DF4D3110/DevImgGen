@@ -1,7 +1,0 @@
-C:\Users\Admin\source\repos\DevImgGen\DigLib\obj\Debug\DigLib.csproj.AssemblyReference.cache
-C:\Users\Admin\source\repos\DevImgGen\DigLib\obj\Debug\DigLib.csproj.CoreCompileInputs.cache
-C:\Users\Admin\source\repos\DevImgGen\bin\Debug\DigLib.dll
-C:\Users\Admin\source\repos\DevImgGen\bin\Debug\DigLib.pdb
-C:\Users\Admin\source\repos\DevImgGen\DigLib\obj\Debug\DigLib.csproj.CopyComplete
-C:\Users\Admin\source\repos\DevImgGen\DigLib\obj\Debug\DigLib.dll
-C:\Users\Admin\source\repos\DevImgGen\DigLib\obj\Debug\DigLib.pdb

@@ -52,7 +52,7 @@ namespace DevImgGen.Pages
     {
       if (!Utils.ProgramExistsInPath("signtool.exe") || !Utils.ProgramExistsInPath("infverif.exe") || !Utils.ProgramExistsInPath("apivalidator.exe") || !Utils.ProgramExistsInPath("inf2cat.exe"))
       {
-        int num = (int) MessageBox.Show("Prerequisite check failed. SignTool, InfVerif, ApiValidator, and Inf2Cat are required for configuration package creation.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+        int num = (int) MessageBox.Show("前置检查失败。创建配置包需要 SignTool、InfVerif、ApiValidator 和 Inf2Cat。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Hand);
         this.OnPageChangeRequested(PageEnum.Landing);
       }
       else
@@ -124,7 +124,7 @@ namespace DevImgGen.Pages
       {
         this.pbProgress.Value = 100;
         this.pbProgress.Style = ProgressBarStyle.Continuous;
-        this.lblProcesStatus.Text = "Done";
+        this.lblProcesStatus.Text = "完成";
         this.OnPageChangeRequested(PageEnum.Build);
       }));
     }
@@ -136,7 +136,7 @@ namespace DevImgGen.Pages
 
     private void PrepUtil_ProgressWarn(object sender, string e)
     {
-      int num = (int) MessageBox.Show(e, "Warning", 
+      int num = (int) MessageBox.Show(e, "警告", 
           MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
     }
 
@@ -191,19 +191,19 @@ namespace DevImgGen.Pages
       this.lblHeader.Name = "lblHeader";
       this.lblHeader.Size = new Size(220, 21);
       this.lblHeader.TabIndex = 1;
-      this.lblHeader.Text = "Create configuration packages";
+      this.lblHeader.Text = "创建配置包";
       this.lblDrvTip.AutoSize = true;
       this.lblDrvTip.ForeColor = SystemColors.GrayText;
       this.lblDrvTip.Location = new Point(41, 104);
       this.lblDrvTip.Name = "lblDrvTip";
       this.lblDrvTip.Size = new Size(493, 30);
       this.lblDrvTip.TabIndex = 5;
-      this.lblDrvTip.Text = "Info: The folder you pick will be recursively searched for *.inf files. Drivers inside archives and\r\nself-extracting OEM installers do not qualify.";
+      this.lblDrvTip.Text = "提示：所选文件夹将被递归搜索 *.inf 文件。压缩包内和自解压 OEM 安装程序中的驱动程序不适用。";
       this.btnBrowseDrv.Location = new Point(462, 74);
       this.btnBrowseDrv.Name = "btnBrowseDrv";
       this.btnBrowseDrv.Size = new Size(75, 25);
       this.btnBrowseDrv.TabIndex = 4;
-      this.btnBrowseDrv.Text = "Browse...";
+      this.btnBrowseDrv.Text = "浏览...";
       this.btnBrowseDrv.UseVisualStyleBackColor = true;
       this.btnBrowseDrv.Click += new EventHandler(this.btnBrowseDrv_Click);
       this.tbDriverDir.Location = new Point(44, 75);
@@ -216,7 +216,7 @@ namespace DevImgGen.Pages
       this.lblDriverLocation.Name = "lblDriverLocation";
       this.lblDriverLocation.Size = new Size(268, 15);
       this.lblDriverLocation.TabIndex = 2;
-      this.lblDriverLocation.Text = "Pick a folder from which drivers will be integrated";
+      this.lblDriverLocation.Text = "选择要集成驱动程序的文件夹";
       this.btnBack.FlatAppearance.BorderSize = 0;
       this.btnBack.FlatAppearance.MouseDownBackColor = Color.Transparent;
       this.btnBack.FlatAppearance.MouseOverBackColor = Color.Transparent;
@@ -237,7 +237,7 @@ namespace DevImgGen.Pages
       this.cmdProcessDrv.Note = "";
       this.cmdProcessDrv.Size = new Size(494, 44);
       this.cmdProcessDrv.TabIndex = 10;
-      this.cmdProcessDrv.Text = "Process drivers";
+      this.cmdProcessDrv.Text = "处理驱动程序";
       this.cmdProcessDrv.UseVisualStyleBackColor = true;
       this.cmdProcessDrv.Click += new EventHandler(this.cmdProcessDrv_Click);
       this.lblConfigTip.AutoSize = true;
@@ -246,12 +246,12 @@ namespace DevImgGen.Pages
       this.lblConfigTip.Name = "lblConfigTip";
       this.lblConfigTip.Size = new Size(501, 30);
       this.lblConfigTip.TabIndex = 9;
-      this.lblConfigTip.Text = "Info: Windows Device Image Generator will create a few packages that are needed for building\r\nan image with drivers included. This needs to be done only once per target device.";
+      this.lblConfigTip.Text = "提示：Windows 设备镜像生成器将创建一些构建含驱动程序镜像所需的包。每个目标设备只需执行一次。";
       this.btnBrowseCfg.Location = new Point(462, 168);
       this.btnBrowseCfg.Name = "btnBrowseCfg";
       this.btnBrowseCfg.Size = new Size(75, 25);
       this.btnBrowseCfg.TabIndex = 8;
-      this.btnBrowseCfg.Text = "Browse...";
+      this.btnBrowseCfg.Text = "浏览...";
       this.btnBrowseCfg.UseVisualStyleBackColor = true;
       this.btnBrowseCfg.Click += new EventHandler(this.btnBrowseSave_Click);
       this.tbConfigDir.Location = new Point(44, 169);
@@ -263,13 +263,13 @@ namespace DevImgGen.Pages
       this.lblConfigLocation.Name = "lblConfigLocation";
       this.lblConfigLocation.Size = new Size(282, 15);
       this.lblConfigLocation.TabIndex = 6;
-      this.lblConfigLocation.Text = "Where do you want to save configuration packages?";
+      this.lblConfigLocation.Text = "你想将配置包保存到哪里？";
       this.lblProcesStatus.AutoSize = true;
       this.lblProcesStatus.Location = new Point(41, 326);
       this.lblProcesStatus.Name = "lblProcesStatus";
       this.lblProcesStatus.Size = new Size(67, 15);
       this.lblProcesStatus.TabIndex = 12;
-      this.lblProcesStatus.Text = "Preparing...";
+      this.lblProcesStatus.Text = "准备中...";
       this.pbProgress.Location = new Point(44, 297);
       this.pbProgress.MarqueeAnimationSpeed = 50;
       this.pbProgress.Name = "pbProgress";

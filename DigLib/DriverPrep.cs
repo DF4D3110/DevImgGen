@@ -61,7 +61,7 @@ namespace DigLib
       Dictionary<string, DriverCandidate> dictionary = this.FilterDrivers(infSource, treatAsArm64);
       if (dictionary == null)
         return 0;
-      this.OnProgressInfo(string.Format("Processing file lists for {0} drivers...", (object) dictionary.Count));
+      this.OnProgressInfo(string.Format("正在处理 {0} 个驱动程序的文件列表...", (object) dictionary.Count));
       foreach (DriverCandidate driverCandidate in dictionary.Values)
       {
         this.m_CurrentDriverFile = Path.GetFileName(driverCandidate.InfPath).ToLowerInvariant();
@@ -102,14 +102,14 @@ namespace DigLib
         strArray = new string[1]{ infSource };
       }
       Dictionary<string, DriverCandidate> dictionary = new Dictionary<string, DriverCandidate>();
-      this.OnProgressInfo(string.Format("Evaluating {0} drivers...", (object) strArray.Length));
+      this.OnProgressInfo(string.Format("正在评估 {0} 个驱动程序...", (object) strArray.Length));
       foreach (string str in strArray)
       {
         this.m_CurrentDriverFile = Path.GetFileName(str).ToLowerInvariant();
         IntPtr num = DigLib.DriverStore.NativeMethods.DriverPackageOpenW(str, treatAsArm64 ? ProcessorArchitecture.Arm64 : ProcessorArchitecture.Amd64, (string) null, DriverPackageOpenFlags.None, IntPtr.Zero);
         if (num == IntPtr.Zero)
         {
-          this.OnProgressWarn(string.Format("Failed to open driver package '{0}', gle=0x{1:x8}", (object) this.m_CurrentDriverFile, (object) Marshal.GetLastWin32Error()));
+          this.OnProgressWarn(string.Format("无法打开驱动程序包 '{0}'，错误代码=0x{1:x8}", (object) this.m_CurrentDriverFile, (object) Marshal.GetLastWin32Error()));
         }
         else
         {
@@ -117,7 +117,7 @@ namespace DigLib
           pVersionInfo.Size = Marshal.SizeOf<DriverPackageVersionInfo>(pVersionInfo);
           if (!DigLib.DriverStore.NativeMethods.DriverPackageGetVersionInfoW(num, ref pVersionInfo))
           {
-            this.OnProgressWarn(string.Format("Failed to get version info for '{0}', gle=0x{1:x8}", (object) this.m_CurrentDriverFile, (object) Marshal.GetLastWin32Error()));
+            this.OnProgressWarn(string.Format("无法获取 '{0}' 的版本信息，错误代码=0x{1:x8}", (object) this.m_CurrentDriverFile, (object) Marshal.GetLastWin32Error()));
             DigLib.DriverStore.NativeMethods.DriverPackageClose(num);
           }
           else if (pVersionInfo.ClassName == "Firmware")
@@ -130,7 +130,7 @@ namespace DigLib
             this.m_CurrentDriverHwIds.Clear();
             if (!DigLib.DriverStore.NativeMethods.DriverPackageEnumDriversW(num, 1U, new DigLib.DriverStore.NativeMethods.PackageEnumCallback(this.EnumDriversProc), IntPtr.Zero))
             {
-              this.OnProgressWarn(string.Format("Failed to enumerate hardware IDs supported by '{0}', gle=0x{1:x8}", (object) this.m_CurrentDriverFile, (object) Marshal.GetLastWin32Error()));
+              this.OnProgressWarn(string.Format("无法枚举 '{0}' 支持的硬件 ID，错误代码=0x{1:x8}", (object) this.m_CurrentDriverFile, (object) Marshal.GetLastWin32Error()));
               DigLib.DriverStore.NativeMethods.DriverPackageClose(num);
             }
             else if (this.m_SkipCurrentDriver)

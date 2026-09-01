@@ -94,7 +94,7 @@ namespace DevImgGen.Dialogs
       this.lblInfo.Name = "lblInfo";
       this.lblInfo.Size = new Size(449, 41);
       this.lblInfo.TabIndex = 1;
-      this.lblInfo.Text = "An identical version of '{0}' was already processed ({1})";
+      this.lblInfo.Text = "已处理过相同版本的 '{0}'（{1}）";
       this.tbPrevHwIds.Location = new Point(68, 74);
       this.tbPrevHwIds.Multiline = true;
       this.tbPrevHwIds.Name = "tbPrevHwIds";
@@ -106,7 +106,7 @@ namespace DevImgGen.Dialogs
       this.lblCurrentIds.Name = "lblCurrentIds";
       this.lblCurrentIds.Size = new Size(181, 15);
       this.lblCurrentIds.TabIndex = 4;
-      this.lblCurrentIds.Text = "HWIDs supported by current INF:";
+      this.lblCurrentIds.Text = "当前 INF 支持的硬件 ID:";
       this.tbNewHwIds.Location = new Point(68, 200);
       this.tbNewHwIds.Multiline = true;
       this.tbNewHwIds.Name = "tbNewHwIds";
@@ -118,7 +118,7 @@ namespace DevImgGen.Dialogs
       this.lblQuestion.Name = "lblQuestion";
       this.lblQuestion.Size = new Size(189, 15);
       this.lblQuestion.TabIndex = 6;
-      this.lblQuestion.Text = "Which INF would you like to keep?";
+      this.lblQuestion.Text = "你想保留哪个 INF？";
       this.pnlOptions.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
       this.pnlOptions.BackColor = Color.FromArgb(240, 240, 240);
       this.pnlOptions.Controls.Add((Control) this.btnKeepPrev);
@@ -133,7 +133,7 @@ namespace DevImgGen.Dialogs
       this.btnKeepPrev.Name = "btnKeepPrev";
       this.btnKeepPrev.Size = new Size(118, 23);
       this.btnKeepPrev.TabIndex = 1;
-      this.btnKeepPrev.Text = "Keep previous INF";
+      this.btnKeepPrev.Text = "保留之前的 INF";
       this.btnKeepPrev.UseVisualStyleBackColor = true;
       this.btnKeepPrev.Click += new EventHandler(this.btnKeepPrev_Click);
       this.btnKeepNew.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -141,7 +141,7 @@ namespace DevImgGen.Dialogs
       this.btnKeepNew.Name = "btnKeepNew";
       this.btnKeepNew.Size = new Size(118, 23);
       this.btnKeepNew.TabIndex = 0;
-      this.btnKeepNew.Text = "Use current INF";
+      this.btnKeepNew.Text = "使用当前 INF";
       this.btnKeepNew.UseVisualStyleBackColor = true;
       this.btnKeepNew.Click += new EventHandler(this.btnKeepNew_Click);
       this.pnlDivider.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -155,7 +155,7 @@ namespace DevImgGen.Dialogs
       this.lblPrevIds.Name = "lblPrevIds";
       this.lblPrevIds.Size = new Size(188, 15);
       this.lblPrevIds.TabIndex = 2;
-      this.lblPrevIds.Text = "HWIDs supported by previous INF:";
+      this.lblPrevIds.Text = "之前的 INF 支持的硬件 ID:";
       this.AcceptButton = (IButtonControl) this.btnKeepNew;
       this.AutoScaleDimensions = new SizeF(96f, 96f);
       this.AutoScaleMode = AutoScaleMode.Dpi;
@@ -176,7 +176,7 @@ namespace DevImgGen.Dialogs
       this.MaximizeBox = false;
       this.MinimizeBox = false;
       this.Name = nameof (IdenticalDriverOverlap);
-      this.Text = "Identical driver overlap";
+      this.Text = "相同驱动程序重叠";
       this.FormClosing += new FormClosingEventHandler(this.OnFormClosing);
       this.pnlOptions.ResumeLayout(false);
       this.ResumeLayout(false);
