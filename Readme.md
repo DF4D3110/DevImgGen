@@ -1,13 +1,6 @@
 ## DevImgGen (汉化修改版)
 
-Windows Device Image Generator (MiniKit codename) v1.7 — 全界面中文化 + Build页面增强
-
-## 项目简介
-
-对微软内部工具 `devimggen.exe` 和 `diglib.dll` 的逆向工程重实现，用于构建 Windows 10X / FactoryOS / Andromeda 设备镜像。
-
-- 逆向工程: devimggen.exe
-- 逆向工程: diglib.dll
+Windows Device Image Generator (MiniKit codename) v1.7 — 全界面中文化 + Build页面增强，用于辅助构建 Windows 10X / FactoryOS / Andromeda 设备镜像。
 
 ## 需要单独准备的内容
 - 具备有效设备布局（ARM/ARM64强制要求）与FM、OEMInput的构建文件
@@ -23,13 +16,7 @@ Windows Device Image Generator (MiniKit codename) v1.7 — 全界面中文化 + 
 ## 本版本修改内容
 
 ### 界面汉化
-所有用户可见字符串已翻译为中文，覆盖：
-- 着陆页（功能选择）
-- 驱动导出页
-- 创建配置包页
-- 构建镜像页
-- 驱动重叠对话框
-- DigLib 进度日志输出
+所有用户可见字符串已翻译为中文。
 
 ### Build 页面增强
 1. **OS包目录检测** — 检测 `Retail\<架构>\fre` 路径是否存在
@@ -55,28 +42,6 @@ Windows Device Image Generator (MiniKit codename) v1.7 — 全界面中文化 + 
 - .NET Framework 4.8
 - 驱动配置包创建需要: signtool.exe, infverif.exe, apivalidator.exe, inf2cat.exe（WDK工具，需在PATH中）
 - 构建镜像需要: 用户自己的 imggen.cmd 或 imageapp.exe（ADK工具）
-
-## 项目结构
-
-```
-DevImgGen.sln
-├── DevImgGen/          # 主GUI程序 (WinForms, .NET 4.8)
-│   ├── Pages/          # 页面（Landing/Export/CreateConfig/Build）
-│   ├── Dialogs/        # 对话框（驱动重叠）
-│   ├── Controls/       # 自定义控件
-│   ├── lib/            # 引用的DLL
-│   ├── universalDDIs/  # 通用DDI白名单
-│   ├── Volantis/       # 设备平台FM模板
-│   ├── certificates/   # OEM测试证书
-│   └── 资源文件         # ReferenceOEMInput.xml, DriverBridgeConfig.xml, WindowsProtectedFiles.xml
-├── DigLib/             # 核心驱动处理库
-├── AppXCommon/         # AppX包COM互操作（参考实现）
-├── AppXImaging/        # AppX镜像（参考实现）
-├── CabApiWrapper/      # CAB API封装（参考实现）
-├── imageapp/           # imageapp重实现（参考实现）
-├── Inf2Cat/            # INF转CAT（参考实现）
-└── ApiValidator/       # API验证器（参考实现）
-```
 
 
 ## 参考
